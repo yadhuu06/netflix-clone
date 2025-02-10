@@ -8,7 +8,7 @@ import facebook_icon from '../../assets/facebook_icon.png'
 export default function Footer() {
   return (
     <div className='footer'>
-      <div className="footer_icon">
+      <div className="footer-icons">
         <img src={facebook_icon} alt="" />
         <img src={instagram_icon} alt="" />
         <img src={twiter_icon} alt="" />
@@ -29,7 +29,7 @@ export default function Footer() {
         <li>Contact Us </li>
         
       </ul>
-      <p className='copright-text'></p>
+      <p className='copright-text'>all right reserved</p>
       
     </div>
   )
