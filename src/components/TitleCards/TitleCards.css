@@ -25,22 +25,24 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+    text-decoration: none;
+    color:white;
 }
-/* Hide scrollbar for Chrome, Safari, and Edge */
+
 .card-list::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for Firefox */
+
 .card-list {
     scrollbar-width: none;
 }
 
-/* Ensure smooth scrolling */
+
 .card-list {
     gap: 10px;
     display: flex;
     overflow-x: scroll;
-    scroll-behavior: smooth; /* Enables smooth scrolling */
-    -webkit-overflow-scrolling: touch; /* Improves scrolling on touch devices */
+    scroll-behavior: smooth; 
+    -webkit-overflow-scrolling: touch; 
 }
