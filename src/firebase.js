@@ -2,18 +2,18 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut} from "firebase/auth";
-import {addDoc, collection, getFirestore} from "firebase/firestore";
+import {setDoc, collection, getFirestore} from "firebase/firestore";
 
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAla8NX-HGNqG6FjOS-2QovXHFJxf3Ja_E",
-  authDomain: "netflix-clone-814dc.firebaseapp.com",
-  projectId: "netflix-clone-814dc",
-  storageBucket: "netflix-clone-814dc.firebasestorage.app",
-  messagingSenderId: "1059301204273",
-  appId: "1:1059301204273:web:b6fb848e4e9622bfbe5010",
-  measurementId: "G-879NE7B3D5"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
@@ -23,9 +23,11 @@ const db = getFirestore(app);
 
 const signup=async(name,email,password)=>{
     try {
+        console.log("Attempting signup with:", email, password);
         const res = await createUserWithEmailAndPassword(auth,email,password);
+        console.log("User created:", res.user)
         const user=res.user;
-        await addDoc(collection(db,"user"),{
+        await setDoc(collection(db,"users"),{
             uid:user.uid,
             name,
             authProvider:"local",
